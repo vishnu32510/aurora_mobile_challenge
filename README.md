@@ -123,7 +123,7 @@ lib/
 ## Getting Started
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/vishnu32510/aurora_mobile_challenge
 cd aurora_mobile_challenge
 flutter pub get
 flutter run
