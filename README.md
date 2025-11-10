@@ -12,6 +12,25 @@ Display a random image from Aurora's `/image` endpoint centered as a square, wit
 
 ---
 
+## Screenshots
+
+<table>
+  <tr>
+    <td><img src="assets/screenshots/1.png" width="200"/></td>
+    <td><img src="assets/screenshots/2.png" width="200"/></td>
+    <td><img src="assets/screenshots/3.png" width="200"/></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td><img src="assets/screenshots/4.png" width="300"/></td>
+    <td><img src="assets/screenshots/5.png" width="300"/></td>
+  </tr>
+</table>
+
+---
+
 ## Implemented Features
 
 ### Core
