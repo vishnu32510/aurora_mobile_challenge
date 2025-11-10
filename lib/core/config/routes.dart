@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import '../utils/logger.dart';
 
 class CustomRouter {
   static Route onGenerateRoute(RouteSettings settings) {
-    debugPrint('Route: ${settings.name}');
+    AppLogger.info('Navigating to route: ${settings.name}');
     switch (settings.name) {
       // case SplashScreen.routeName:
       //   return SplashScreen.route();

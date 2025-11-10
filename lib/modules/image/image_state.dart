@@ -1,34 +1,38 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
+import '../../../core/repositories/image_palette.dart';
 
 class ImageState extends Equatable {
   final String? imageUrl;
   final bool isLoading;
   final String? errorMessage;
-  final Color? backgroundColor;
+  final ImagePalette? imagePalette;
 
   const ImageState({
     this.imageUrl,
     this.isLoading = false,
     this.errorMessage,
-    this.backgroundColor,
+    this.imagePalette,
   });
 
   ImageState copyWith({
     String? imageUrl,
     bool? isLoading,
     String? errorMessage,
-    Color? backgroundColor,
+    ImagePalette? imagePalette,
+    bool clearImagePalette = false,
+    bool clearImageUrl = false,
   }) {
     return ImageState(
-      imageUrl: imageUrl ?? this.imageUrl,
+      imageUrl: clearImageUrl ? null : (imageUrl ?? this.imageUrl),
       isLoading: isLoading ?? this.isLoading,
       errorMessage: errorMessage ?? this.errorMessage,
-      backgroundColor: backgroundColor ?? this.backgroundColor,
+      imagePalette: clearImagePalette 
+          ? null 
+          : (imagePalette ?? this.imagePalette),
     );
   }
 
   @override
-  List<Object?> get props => [imageUrl, isLoading, errorMessage, backgroundColor];
+  List<Object?> get props => [imageUrl, isLoading, errorMessage, imagePalette];
 }
 

@@ -151,4 +151,28 @@ class HttpServices extends Services {
       return ServiceError.unknownError;
     }
   }
+
+  Future<dynamic> getBytesMethod(String url) async {
+    try {
+      var data = await http.get(Uri.parse(url), headers: <String, String>{
+        // 'Authorization': 'Bearer $token',
+      }).timeout(const Duration(seconds: 30));
+      
+      if (data.statusCode == 200) {
+        return data.bodyBytes;
+      } else if (data.statusCode == 400 || data.statusCode == 404) {
+        return ServiceError.clientError;
+      } else if (data.statusCode == 500) {
+        return ServiceError.serverError;
+      } else {
+        return ServiceError.unknownResponseError;
+      }
+    } on TimeoutException catch (_) {
+      return ServiceError.timeoutError;
+    } on SocketException catch (_) {
+      return ServiceError.socketError;
+    } on Exception catch (_) {
+      return ServiceError.unknownError;
+    }
+  }
 }
