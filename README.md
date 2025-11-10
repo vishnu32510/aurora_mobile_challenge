@@ -1,104 +1,133 @@
-# Aurora Mobile Engineer Challenge
+# Aurora Mobile Engineer Take-Home Challenge
 
-A Flutter mobile app that fetches random images from an API and displays them with an adaptive background color that matches the image's dominant colors.
+A Flutter app that fetches random images from the Aurora API and adapts the background color to the image's dominant tones for an immersive experience.
 
-## Features
+Built with Flutter + BLoC architecture and optimized for smooth animations, theme awareness, and accessibility.
 
-- ✅ **Single Screen UI** - Clean, focused interface
-- ✅ **Square Image Display** - Images are displayed centered as squares
-- ✅ **Adaptive Background** - Background color automatically adapts to the image's dominant color
-- ✅ **Image Fetching** - "Another" button fetches new random images
-- ✅ **Loading States** - Smooth loading indicators while fetching
-- ✅ **Error Handling** - Graceful error handling with user-friendly messages
-- ✅ **Smooth Transitions** - Fade animations for images and color transitions
-- ✅ **Light/Dark Mode** - Full support for light and dark themes with smooth transitions
-- ✅ **Accessibility** - Semantic labels and proper accessibility support
-- ✅ **Image Caching** - Efficient image caching using `cached_network_image`
+---
 
-## Architecture
+## Goal
 
-The app follows clean architecture principles with:
+Display a random image from Aurora's `/image` endpoint centered as a square, with an adaptive background and a button to fetch another image.
 
-- **BLoC Pattern** - State management using `flutter_bloc`
-- **Repository Pattern** - Data layer abstraction
-- **Dependency Injection** - Using `GetIt` for service locator
-- **Modular Structure** - Organized into modules (image, theme) and screens
+---
+
+## Implemented Features
+
+### Core
+
+* **Random Image Fetching** – Uses Aurora API (`GET /image`) to retrieve new images on tap.
+
+* **Square Image Display** – Maintains perfect 1:1 aspect ratio across orientations.
+
+* **Adaptive Background** – Background color and gradient adapt dynamically using `PaletteGenerator`.
+
+* **Another Button** – Loads a new random image with one tap.
+
+* **Image Caching** – Efficient network caching for repeat views.
+
+### User Experience
+
+* **Smooth Transitions** –
+
+  * Fade-in for images (300 ms)
+
+  * Animated background color transition (800 ms, easeOutCubic)
+
+* **Loading & Error States** –
+
+  * Theme-aware shimmer placeholders
+
+  * Graceful "Image not found" fallback
+
+* **Light / Dark / System Themes** – Fully responsive to system settings.
+
+* **Accessibility** – Semantic labels, proper button roles, and image descriptions.
+
+### Architecture
+
+* **BLoC + Repository Pattern** – Predictable, modular state management.
+
+* **Dependency Injection (GetIt)** – Clean service access and testing setup.
+
+* **Async Color Extraction** – Runs off the main thread for a responsive UI.
+
+* **Custom Widgets & Wrappers** – Reusable theme-aware widgets and shimmer services for consistent UI patterns.
+
+### Future Scalability
+
+Currently, color extraction runs asynchronously via Flutter's background image-decoding threads.
+
+For future expansion (e.g., batch or parallel processing of multiple images), the logic can be moved to a dedicated **Flutter Isolate** to parallelize heavy color analysis.
+
+---
 
 ## Project Structure
 
 ```
 lib/
 ├── core/
-│   ├── di/              # Dependency injection
-│   ├── repositories/    # Data repositories
-│   ├── services/        # HTTP services
-│   └── utils/           # Utilities and constants
+│   ├── di/                # Dependency injection setup
+│   ├── repositories/      # Image repository
+│   └── services/          # HTTP service layer
 ├── modules/
-│   ├── image/           # Image feature module (BLoC, events, state)
-│   └── theme/           # Theme management module
+│   ├── image/             # Image BLoC (event/state/logic)
+│   └── theme/             # Theme BLoC and toggle widget
 └── screens/
-    └── image_viewer/    # Image viewer screen and widgets
+    └── image_viewer/      # Main UI and widgets
 ```
+
+---
 
 ## Getting Started
 
-### Prerequisites
-
-- Flutter SDK (3.9.2 or higher)
-- Dart SDK
-- iOS Simulator / Android Emulator or physical device
-
-### Installation
-
-1. Clone the repository:
 ```bash
 git clone <repository-url>
 cd aurora_mobile_challenge
-```
-
-2. Install dependencies:
-```bash
 flutter pub get
-```
-
-3. Run the app:
-```bash
 flutter run
 ```
 
-## API
+Tested on Android & iOS (Flutter 3.9+).
 
-The app uses the Aurora API endpoint:
-- **Base URL**: `https://november7-730026606190.europe-west1.run.app`
-- **Endpoint**: `GET /image`
-- **Response**: `{"url": "https://images.unsplash.com/..."}`
+---
 
-## Key Technologies
+## Demo
 
-- **Flutter** - UI framework
-- **flutter_bloc** - State management
-- **cached_network_image** - Image caching
-- **palette_generator** - Color extraction from images
-- **GetIt** - Dependency injection
+### iOS Demo
+[Demo_IOS.mov](./assets/demo/Demo_IOS.mov)
 
-## Requirements Met
+### Android Demo
+[Demo_Android.mp4](./assets/demo/Demo_Android.mp4)
 
-All requirements from the assignment have been implemented:
+The videos demonstrate:
 
-- ✅ Single screen UI
-- ✅ Square image centered on screen
-- ✅ Background color adapts to the image
-- ✅ "Another" button below the image
-- ✅ Loading state while fetching
-- ✅ Error handling
-- ✅ Smooth transitions
-- ✅ Light/dark mode support
-- ✅ Basic accessibility
+1. App launch and first image load
 
-## Video Demo
+2. "Another" button fetching new images
 
-[Add link to video demonstration here]
+3. Smooth background transitions
 
-## License
+4. Light/Dark mode switching
 
-This project is part of the Aurora Mobile Engineer take-home challenge.
+5. Loading and error handling
+
+---
+
+## Notes
+
+* Built with Material 3 design principles.
+
+* Handles large Unsplash images gracefully.
+
+* Fully async image decoding ensures zero UI jank.
+
+* Future optimization path: migrate color extraction into a persistent Flutter Isolate for multi-image workloads.
+
+---
+
+## Author
+
+Developed by Vishnu Priyan Sellam Shanmugavel
+
+for the **Aurora Mobile Engineer Take-Home Challenge**.
