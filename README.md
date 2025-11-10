@@ -12,6 +12,28 @@ Display a random image from Aurora's `/image` endpoint centered as a square, wit
 
 ---
 
+Tested on Android & iOS (Flutter 3.3+).
+
+---
+
+## Downloads
+
+### Pre-built APK
+Download the latest release APK from GitHub Releases:
+
+**[Download APK (v1.0.0)](https://github.com/vishnu32510/aurora_mobile_challenge/releases/tag/v1.0.0)**
+
+---
+## Demo
+
+### iOS Demo
+- [Local File](./assets/demo/Demo_IOS.mov)
+- [Google Drive](https://drive.google.com/file/d/1L87MSbM1auBgbKrnZvf3EbtqmaF2M7RY/view?usp=sharing)
+
+### Android Demo
+- [Local File](./assets/demo/Demo_Android.mp4)
+- [Google Drive](https://drive.google.com/file/d/1QPFBWWmadkI1Zbq0DtWbpaogK3quEl03/view?usp=sharing)
+
 ## Screenshots
 
 <table>
@@ -106,30 +128,6 @@ cd aurora_mobile_challenge
 flutter pub get
 flutter run
 ```
-
-Tested on Android & iOS (Flutter 3.9+).
-
----
-
-## Demo
-
-### iOS Demo
-[Demo_IOS.mov](./assets/demo/Demo_IOS.mov)
-
-### Android Demo
-[Demo_Android.mp4](./assets/demo/Demo_Android.mp4)
-
-The videos demonstrate:
-
-1. App launch and first image load
-
-2. "Another" button fetching new images
-
-3. Smooth background transitions
-
-4. Light/Dark mode switching
-
-5. Loading and error handling
 
 ---
 
